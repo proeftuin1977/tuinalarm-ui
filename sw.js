@@ -1,5 +1,5 @@
 // Bewaart de app-bestanden zodat de app snel opent. Verhoog VERSIE na elke wijziging.
-const VERSIE = 'tuinalarm-v4';
+const VERSIE = 'tuinalarm-v5';
 const BESTANDEN = ['./', 'index.html', 'start-rustig.html', 'start-combi.html', 'start-b-groot.html', 'start-b.html', 'startscherm-opties.html', 'ui-voorbeeld.html', 'manifest.webmanifest', 'icon-192.png', 'icon-512.png'];
 self.addEventListener('install', e => {
   e.waitUntil(caches.open(VERSIE)
