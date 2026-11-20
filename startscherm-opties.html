@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="nl">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#121417">
+<link rel="manifest" href="manifest.webmanifest">
+<title>Startscherm — drie opties</title>
+<style>
+:root{--bg:#121417;--kaart:#1e2228;--grijs:#3a4048;--tekst:#e8eaed;--zacht:#9aa0a6;
+--geel:#f2c230;--groen:#5cd68a;--oranje:#ffb347;--rood:#ff5c5c;color-scheme:dark}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#0c0e11;color:var(--tekst);font:16px/1.5 system-ui,sans-serif;padding:20px}
+h1{font-size:20px;margin-bottom:18px}
+.rij{display:flex;gap:20px;flex-wrap:wrap;align-items:flex-start}
+.kol{width:310px}
+.kol h2{font-size:13px;color:var(--geel);margin-bottom:3px}
+.kol p.om{font-size:13px;color:var(--zacht);margin-bottom:9px;min-height:40px}
+.scherm{background:var(--bg);border:1px solid #23272e;border-radius:22px;overflow:hidden;
+display:flex;flex-direction:column;height:620px}
+.kop{padding:15px 15px 9px;font-size:1.25rem;font-weight:700}
+.body{padding:0 13px 13px;overflow:auto;flex:1}
+.kaart{background:var(--kaart);border-radius:14px;padding:13px 15px;margin-bottom:11px}
+.lab{color:var(--zacht);font-size:.78rem}
+.waarde{font-size:1.5rem;font-weight:700;line-height:1.1}
+.tussen{display:flex;justify-content:space-between;align-items:center;gap:10px}
+.sch{display:flex;justify-content:space-between;align-items:center;padding:9px 0}
+.sch+.sch{border-top:1px solid #272c33}
+.sch .naam{font-size:1.02rem}
+.tog{width:48px;height:27px;border-radius:999px;position:none;flex:none;position:relative;
+border:1.5px solid var(--groen)}
+.tog::after{content:"";position:absolute;right:3px;top:2.5px;width:18px;height:18px;
+border-radius:50%;background:var(--groen)}
+.tog.uit{border-color:var(--grijs)}
+.tog.uit::after{right:auto;left:3px;background:var(--grijs)}
+.duo{display:flex;gap:11px}.duo>*{flex:1}
+.drie{display:flex;gap:11px}.drie>*{flex:1}
+.balk{height:7px;background:var(--grijs);border-radius:4px;overflow:hidden;margin-top:7px}
+.balk i{display:block;height:100%;background:var(--groen)}
+.balk i.op{background:var(--oranje)}
+.sensor{display:flex;justify-content:space-between;align-items:center;padding:9px 0}
+.sensor+.sensor{border-top:1px solid #272c33}
+.stip{width:9px;height:9px;border-radius:50%;display:inline-block;margin-right:8px;flex:none}
+.sg{background:var(--groen)}.sr{background:var(--rood)}.sx{background:var(--grijs)}
+.sensor .re{text-align:right;font-size:.82rem;color:var(--zacht);flex:none}
+.groen{color:var(--groen)}.rood{color:var(--rood)}.geel{color:var(--geel)}
+.oranje{color:var(--oranje)}.zacht{color:var(--zacht)}
+.smal{display:flex;justify-content:space-between;align-items:center;
+background:var(--kaart);border-radius:12px;padding:11px 15px;margin-bottom:9px}
+.nav{display:flex;border-top:1px solid #23272e}
+.nav div{flex:1;text-align:center;padding:9px 0 7px;font-size:11px;color:var(--zacht)}
+.nav div.aan{color:var(--geel)}
+.nav .ico{display:block;font-size:18px;line-height:1.35}
+</style>
+<style>.terug{position:sticky;top:0;z-index:99;display:block;background:#0c0e11;color:#f2c230;padding:14px 16px;text-decoration:none;font:600 17px system-ui;border-bottom:1px solid #23272e}</style>
+<a class="terug" href="./">&larr; Versies</a>
+
+
+<h1>Startscherm — drie indelingen</h1>
+
+<div class="rij">
+
+<!-- ============ A ============ -->
+<div class="kol">
+<h2>A — alles onder elkaar</h2>
+<p class="om">Niets verstopt, je scrollt. Prima bij weinig sensoren.</p>
+<div class="scherm"><div class="kop">Tuinalarm</div><div class="body">
+
+  <div class="kaart">
+    <div class="sch"><span class="naam">Bewakingssysteem</span><span class="tog"></span></div>
+    <div class="sch"><span class="naam">Camera</span><span class="tog"></span></div>
+    <div class="sch"><span class="naam">Sensoren</span><span class="tog"></span></div>
+  </div>
+
+  <div class="kaart">
+    <p class="lab">Camera</p>
+    <div class="duo" style="margin-top:4px">
+      <div><p class="lab">PIR vandaag</p><div class="waarde">12</div></div>
+      <div><p class="lab">Personen</p><div class="waarde geel">3</div></div>
+      <div><p class="lab">Gevoelig</p><div class="waarde">Hoog</div></div>
+    </div>
+  </div>
+
+  <div class="kaart">
+    <p class="lab">Sensoren</p>
+    <div class="sensor"><span><span class="stip sg"></span>Hek achter</span><span class="re">rust · 87%</span></div>
+    <div class="sensor"><span><span class="stip sr"></span>Terras</span><span class="re rood">BEWEGING · 64%</span></div>
+    <div class="sensor"><span><span class="stip sg"></span>Serredeur</span><span class="re">dicht · 91%</span></div>
+    <div class="sensor"><span><span class="stip sx"></span>Schuur</span><span class="re oranje">weg? · 12%</span></div>
+    <div class="sensor"><span><span class="stip sg"></span>Alarmlamp</span><span class="re">uit · zon</span></div>
+  </div>
+
+  <div class="kaart">
+    <div class="tussen"><p class="lab">Data</p><span class="zacht">3,4 GB over</span></div>
+    <div class="balk"><i style="width:66%"></i></div>
+  </div>
+
+  <div class="kaart">
+    <div class="tussen"><p class="lab">Accu</p><span class="zacht">82% · zon 14 W</span></div>
+    <div class="balk"><i style="width:82%"></i></div>
+  </div>
+
+</div><div class="nav">
+  <div class="aan"><span class="ico">⌂</span>start</div><div><span class="ico">▣</span>live</div>
+  <div><span class="ico">⏺</span>opnames</div><div><span class="ico">⚙</span>instellingen</div>
+</div></div></div>
+
+<!-- ============ B ============ -->
+<div class="kol">
+<h2>B — tegels, past op één scherm</h2>
+<p class="om">Geen scrollen. Details pas na een tik op een tegel.</p>
+<div class="scherm"><div class="kop">Tuinalarm</div><div class="body">
+
+  <div class="kaart">
+    <div class="sch"><span class="naam">Bewakingssysteem</span><span class="tog"></span></div>
+    <div class="sch"><span class="naam">Camera</span><span class="tog"></span></div>
+    <div class="sch"><span class="naam">Sensoren</span><span class="tog"></span></div>
+  </div>
+
+  <div class="duo">
+    <div class="kaart"><p class="lab">Camera</p>
+      <div class="waarde">12<span class="zacht" style="font-size:1rem"> pir</span></div>
+      <p class="lab"><span class="geel">3 personen</span> · hoog</p></div>
+    <div class="kaart"><p class="lab">Sensoren</p>
+      <div class="waarde rood">1</div>
+      <p class="lab">van 5 in alarm</p></div>
+  </div>
+
+  <div class="duo">
+    <div class="kaart"><p class="lab">Data</p>
+      <div class="waarde">3,4<span class="zacht" style="font-size:1rem"> GB</span></div>
+      <div class="balk"><i style="width:66%"></i></div></div>
+    <div class="kaart"><p class="lab">Accu</p>
+      <div class="waarde">82<span class="zacht" style="font-size:1rem">%</span></div>
+      <div class="balk"><i style="width:82%"></i></div></div>
+  </div>
+
+  <div class="kaart">
+    <div class="tussen"><span class="rood">Terras — beweging</span><span class="zacht">nu</span></div>
+  </div>
+
+</div><div class="nav">
+  <div class="aan"><span class="ico">⌂</span>start</div><div><span class="ico">▣</span>live</div>
+  <div><span class="ico">⏺</span>opnames</div><div><span class="ico">⚙</span>instellingen</div>
+</div></div></div>
+
+<!-- ============ C ============ -->
+<div class="kol">
+<h2>C — mengvorm (mijn voorkeur)</h2>
+<p class="om">Schakelaars en sensoren groot, de rest als dunne regel met balkje.</p>
+<div class="scherm"><div class="kop">Tuinalarm</div><div class="body">
+
+  <div class="kaart">
+    <div class="sch"><span class="naam">Bewakingssysteem</span><span class="tog"></span></div>
+    <div class="sch"><span class="naam">Camera</span><span class="tog"></span></div>
+    <div class="sch"><span class="naam">Sensoren</span><span class="tog"></span></div>
+  </div>
+
+  <div class="kaart">
+    <p class="lab">Sensoren</p>
+    <div class="sensor"><span><span class="stip sg"></span>Hek achter</span><span class="re">rust · 87%</span></div>
+    <div class="sensor"><span><span class="stip sr"></span>Terras</span><span class="re rood">BEWEGING · 64%</span></div>
+    <div class="sensor"><span><span class="stip sg"></span>Serredeur</span><span class="re">dicht · 91%</span></div>
+    <div class="sensor"><span><span class="stip sx"></span>Schuur</span><span class="re oranje">weg? · 12%</span></div>
+    <div class="sensor"><span><span class="stip sg"></span>Alarmlamp</span><span class="re">uit · zon</span></div>
+  </div>
+
+  <div class="smal"><span>Camera</span>
+    <span><b>12</b> <span class="zacht">pir</span> &nbsp; <b class="geel">3</b>
+    <span class="zacht">personen</span> &nbsp; <span class="zacht">hoog</span></span></div>
+
+  <div class="smal"><span>Data</span>
+    <span style="display:flex;align-items:center;gap:9px">
+      <span style="width:70px" class="balk"><i style="width:66%"></i></span>
+      <b>3,4 GB</b></span></div>
+
+  <div class="smal"><span>Accu</span>
+    <span style="display:flex;align-items:center;gap:9px">
+      <span style="width:70px" class="balk"><i style="width:82%"></i></span>
+      <b>82%</b></span></div>
+
+</div><div class="nav">
+  <div class="aan"><span class="ico">⌂</span>start</div><div><span class="ico">▣</span>live</div>
+  <div><span class="ico">⏺</span>opnames</div><div><span class="ico">⚙</span>instellingen</div>
+</div></div></div>
+
+</div>
+</html>

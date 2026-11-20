@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="nl">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#121417">
+<link rel="manifest" href="manifest.webmanifest">
+<title>Tuinalarm — UI voorbeeld</title>
+<style>
+/* Overgenomen uit vbapp/web/style.css */
+:root{
+  --achtergrond:#121417; --kaart:#1e2228; --knop-grijs:#3a4048;
+  --tekst:#e8eaed; --zacht:#9aa0a6; --geel:#f2c230;
+  --groen:#5cd68a; --oranje:#ffb347; --rood:#ff5c5c; --blauw:#6ab0ff;
+  color-scheme:dark;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#0c0e11;color:var(--tekst);font:16px/1.5 system-ui,sans-serif;padding:20px}
+h1{font-size:20px;margin-bottom:4px}
+.uitleg{color:var(--zacht);font-size:14px;margin-bottom:22px;max-width:62ch}
+.rij{display:flex;gap:18px;flex-wrap:wrap;align-items:flex-start}
+.tel{width:300px}
+.tel h2{font-size:12px;color:var(--zacht);text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px}
+.scherm{background:var(--achtergrond);border:1px solid #23272e;border-radius:22px;
+  overflow:hidden;display:flex;flex-direction:column;height:580px}
+.kop{padding:16px 16px 10px;font-size:1.3rem;font-weight:700}
+.body{padding:0 14px 14px;overflow:auto;flex:1}
+
+.kaart{background:var(--kaart);border-radius:14px;padding:14px 16px;margin-bottom:12px}
+.kaart-titel{color:var(--zacht);font-size:.8rem;margin:0}
+.groot{font-size:1.15rem;font-weight:700;line-height:1.3}
+
+/* drie knopsoorten */
+.knop{font:inherit;font-size:1rem;color:#fff;background:var(--knop-grijs);border:0;
+  border-radius:12px;min-height:56px;padding:.5rem 1rem;display:flex;align-items:center;
+  justify-content:center;margin-bottom:10px;text-decoration:none}
+.knop-rand{background:transparent;color:var(--geel);border:1.5px solid var(--knop-grijs)}
+.knop-hoofd{background:#2e7d4f;width:100%;font-weight:700}
+.knop-klein{min-height:44px;font-size:.85rem;padding:.3rem .9rem;display:inline-flex;
+  width:auto;margin:0}
+.knop-rood{color:var(--rood);background:transparent;border:1.5px solid var(--knop-grijs)}
+
+.tussen{display:flex;justify-content:space-between;align-items:center;gap:10px}
+.geel{color:var(--geel)}.groen{color:var(--groen)}.rood{color:var(--rood)}
+.zacht{color:var(--zacht)}.oranje{color:var(--oranje)}
+.stip{width:9px;height:9px;border-radius:50%;display:inline-block;margin-right:8px}
+.sg{background:var(--groen)}.sr{background:var(--rood)}.sx{background:var(--knop-grijs)}
+
+.tellers{display:flex;gap:12px}
+.tellers .kaart{flex:1;padding:10px 14px}
+.teller-groot{font-size:1.6rem;font-weight:700;line-height:1.15}
+
+.schakel{width:50px;height:28px;border-radius:999px;border:1.5px solid var(--groen);
+  position:relative;flex:none}
+.schakel::after{content:"";position:absolute;right:3px;top:3px;width:19px;height:19px;
+  border-radius:50%;background:var(--groen)}
+
+.veld{background:#0c0e11;border:1.5px solid var(--knop-grijs);border-radius:10px;
+  padding:12px;margin-bottom:10px}
+.label{font-size:.72rem;color:var(--zacht);text-transform:uppercase;letter-spacing:.06em;
+  margin:14px 0 6px}
+.balk{height:6px;background:var(--knop-grijs);border-radius:4px;overflow:hidden;margin-top:8px}
+.balk i{display:block;height:100%;background:var(--groen)}
+.regel{border:1.5px solid var(--knop-grijs);border-radius:12px;padding:12px 14px;
+  margin-bottom:10px;font-size:.95rem;line-height:1.45}
+.log{font:12px/1.75 ui-monospace,monospace;color:var(--zacht)}
+.log b{color:var(--tekst);font-weight:400}
+
+.nav{display:flex;border-top:1px solid #23272e}
+.nav div{flex:1;text-align:center;padding:10px 0 8px;font-size:11px;color:var(--zacht)}
+.nav div.aan{color:var(--geel)}
+.nav .ico{display:block;font-size:18px;line-height:1.35}
+</style>
+<style>.terug{position:sticky;top:0;z-index:99;display:block;background:#0c0e11;color:#f2c230;padding:14px 16px;text-decoration:none;font:600 17px system-ui;border-bottom:1px solid #23272e}</style>
+<a class="terug" href="./">&larr; Versies</a>
+
+
+<h1>Tuinalarm — nieuwe schermen</h1>
+<p class="uitleg">Alleen de kleuren van de roosterapp overgenomen. Verder gewone kaarten,
+grijze knoppen, groen voor de hoofdactie, geel als accent. Niets werkt, dit is een plaatje.</p>
+
+<div class="rij">
+
+<div class="tel"><h2>1 · Start</h2>
+<div class="scherm"><div class="kop">Tuinalarm</div><div class="body">
+  <div class="kaart tussen">
+    <div><p class="kaart-titel">Bewaking</p><div class="groot groen">Aan</div></div>
+    <div class="schakel"></div>
+  </div>
+  <div class="kaart">
+    <p class="kaart-titel">Camera</p>
+    <div class="groot"><span class="groen">●</span> Luistert</div>
+    <p class="kaart-titel" style="margin-top:4px">laatste beweging 11:42</p>
+  </div>
+  <div class="tellers">
+    <div class="kaart"><p class="kaart-titel">Sensoren</p>
+      <div class="teller-groot groen">5</div><p class="kaart-titel">alles rustig</p></div>
+    <div class="kaart"><p class="kaart-titel">Accu</p>
+      <div class="teller-groot geel">82%</div><p class="kaart-titel">zon 14 W</p></div>
+  </div>
+  <a class="knop knop-rand">Live bekijken</a>
+</div><div class="nav">
+  <div class="aan"><span class="ico">⌂</span>start</div><div><span class="ico">▣</span>live</div>
+  <div><span class="ico">⏺</span>opnames</div><div><span class="ico">⚙</span>instellingen</div>
+</div></div></div>
+
+<div class="tel"><h2>2 · Sensoren</h2>
+<div class="scherm"><div class="kop">Sensoren</div><div class="body">
+  <div class="kaart tussen"><div><div class="groot"><span class="stip sg"></span>Hek achter</div>
+    <p class="kaart-titel">beweging · batterij 87%</p></div><span class="zacht">rust</span></div>
+  <div class="kaart tussen"><div><div class="groot"><span class="stip sr"></span>Terras</div>
+    <p class="kaart-titel">beweging · batterij 64%</p></div><b class="rood">BEWEGING</b></div>
+  <div class="kaart tussen"><div><div class="groot"><span class="stip sg"></span>Serredeur</div>
+    <p class="kaart-titel">deur · batterij 91%</p></div><span class="zacht">dicht</span></div>
+  <div class="kaart tussen"><div><div class="groot"><span class="stip sx"></span>Schuur</div>
+    <p class="kaart-titel">niets gehoord sinds 22:10</p></div><b class="oranje">weg?</b></div>
+  <div class="kaart tussen"><div><div class="groot"><span class="stip sg"></span>Alarmlamp</div>
+    <p class="kaart-titel">sirene + licht · zonne-energie</p></div><span class="zacht">uit</span></div>
+  <a class="knop knop-hoofd">Sensor toevoegen</a>
+</div><div class="nav">
+  <div><span class="ico">⌂</span>start</div><div class="aan"><span class="ico">◉</span>sensoren</div>
+  <div><span class="ico">⏺</span>opnames</div><div><span class="ico">⚙</span>instellingen</div>
+</div></div></div>
+
+<div class="tel"><h2>3 · Sensor bekijken</h2>
+<div class="scherm"><div class="kop">Terras</div><div class="body">
+  <div class="kaart">
+    <p class="kaart-titel">Nu</p>
+    <div class="groot rood">BEWEGING</div>
+    <p class="kaart-titel">net nu · daarvoor 11:42</p></div>
+  <div class="label">Naam</div><div class="veld">Terras</div>
+  <div class="label">Plek</div><div class="veld">Tuin — achter</div>
+  <div class="kaart">
+    <div class="tussen"><span class="zacht">Batterij</span><b>64%</b></div>
+    <div class="balk"><i style="width:64%"></i></div>
+    <p class="kaart-titel" style="margin-top:9px">signaal goed · laatst gehoord 12:03</p>
+  </div>
+  <a class="knop knop-rand">Test: laat hem knipperen</a>
+  <a class="knop knop-rood">Sensor verwijderen</a>
+</div><div class="nav">
+  <div><span class="ico">⌂</span>start</div><div class="aan"><span class="ico">◉</span>sensoren</div>
+  <div><span class="ico">⏺</span>opnames</div><div><span class="ico">⚙</span>instellingen</div>
+</div></div></div>
+
+<div class="tel"><h2>4 · Koppelen</h2>
+<div class="scherm"><div class="kop">Sensor toevoegen</div><div class="body">
+  <div class="kaart">
+    <p class="kaart-titel">Zoeken</p>
+    <div class="teller-groot geel">2:41</div>
+    <p class="kaart-titel">zet je sensor nu in koppelstand</p></div>
+  <div class="kaart"><p class="kaart-titel">Meestal</p>
+    <div>Knopje ingedrukt houden tot hij knippert.</div></div>
+  <div class="kaart">
+    <p class="kaart-titel groen">Gevonden</p>
+    <div class="groot">HOBEIAN ZG-204Z</div>
+    <p class="kaart-titel">beweging + lichtsterkte</p>
+    <div class="label">Hoe noem je hem?</div><div class="veld">Hek achter</div>
+    <a class="knop knop-hoofd">Opslaan</a></div>
+  <a class="knop knop-rand">Stoppen met zoeken</a>
+</div><div class="nav">
+  <div><span class="ico">⌂</span>start</div><div class="aan"><span class="ico">◉</span>sensoren</div>
+  <div><span class="ico">⏺</span>opnames</div><div><span class="ico">⚙</span>instellingen</div>
+</div></div></div>
+
+<div class="tel"><h2>5 · Regels</h2>
+<div class="scherm"><div class="kop">Regels</div><div class="body">
+  <div class="regel">Als <b class="geel">Hek achter</b> beweging ziet<br>
+    dan <b class="geel">licht aan</b></div>
+  <div class="regel">Als <b class="geel">Hek achter</b> én <b class="geel">Terras</b>
+    binnen <b class="geel">60 sec</b><br>dan <b class="rood">sirene</b> + melding</div>
+  <div class="regel">Als <b class="geel">Serredeur</b> opengaat
+    tussen <b class="geel">22:00 en 07:00</b><br>dan <b class="rood">sirene</b> + opnemen</div>
+  <div class="regel" style="opacity:.45">Als <b>accu onder 30%</b><br>dan melding — uit</div>
+  <a class="knop knop-hoofd">Regel toevoegen</a>
+  <div class="label">Laatst gebeurd</div>
+  <div class="log">
+    <b>12:03</b> Terras — beweging<br><b>11:42</b> Camera — persoon gezien<br>
+    <b>09:15</b> Serredeur — dicht<br><b>08:50</b> Hek achter — beweging
+  </div>
+</div><div class="nav">
+  <div><span class="ico">⌂</span>start</div><div><span class="ico">◉</span>sensoren</div>
+  <div><span class="ico">⏺</span>opnames</div><div class="aan"><span class="ico">⚙</span>instellingen</div>
+</div></div></div>
+
+</div>
+</html>
