@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="nl">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#121417">
+<link rel="manifest" href="manifest.webmanifest">
+<title>Tuinalarm - combi</title>
+<style>
+:root{--bg:#121417;--kaart:#1e2228;--grijs:#3a4048;--tekst:#e8eaed;--zacht:#9aa0a6;
+--geel:#f2c230;--groen:#5cd68a;--oranje:#ffb347;--rood:#ff5c5c;color-scheme:dark}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+body{background:var(--bg);color:var(--tekst);font:clamp(17px,4.6vw,20px)/1.35 system-ui,sans-serif;
+max-width:30rem;margin:0 auto;padding:0 14px 96px}
+.terug{position:sticky;top:0;z-index:99;display:block;background:#0c0e11;color:#f2c230;
+padding:14px 16px;margin:0 -14px 12px;text-decoration:none;font:600 17px system-ui;border-bottom:1px solid #23272e}
+h1{font-size:1.4rem;margin:2px 2px 12px}
+svg{fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;flex:none}
+
+/* drie grote schakelaars: naam boven, pictogram, dan aan of uit */
+.drie{display:flex;gap:10px;margin-bottom:12px}
+.drie button{flex:1;min-width:0;background:var(--kaart);border:0;border-radius:16px;color:var(--zacht);
+font:inherit;padding:16px 4px 14px;display:flex;flex-direction:column;align-items:center;gap:12px;
+min-height:176px;cursor:pointer}
+.drie .naam{font-size:1.08rem;font-weight:600;color:var(--tekst)}
+.drie svg{width:64px;height:64px;stroke-width:1.5}
+.drie .stand{font-size:1.35rem;font-weight:700}
+.drie .stand::before{content:"uit"}
+.drie button.aan{color:var(--groen)}
+.drie button.aan .stand::before{content:"aan"}
+.drie button:active{background:#272c33}
+
+.melding{display:flex;align-items:center;gap:12px;background:var(--kaart);border-radius:16px;
+padding:16px;margin-bottom:12px;color:var(--rood)}
+.melding svg{width:34px;height:34px}
+.melding span{flex:1;font-size:1.25rem;font-weight:700}
+.melding small{color:var(--zacht);font-size:.9rem;font-weight:400}
+
+/* kaarten: een per rij, groot, weinig tekst */
+.kaart{display:flex;align-items:center;gap:16px;background:var(--kaart);border-radius:16px;
+padding:18px 16px;margin-bottom:12px}
+.kaart>svg{width:42px;height:42px;color:var(--zacht)}
+.inh{flex:1;min-width:0}
+.rij2{display:flex;gap:22px}
+.groot{font-size:2.1rem;font-weight:700;line-height:1.05}
+.lab{color:var(--zacht);font-size:.92rem;margin-top:3px}
+.geel{color:var(--geel)}.groen{color:var(--groen)}.rood{color:var(--rood)}.oranje{color:var(--oranje)}
+.balk{height:10px;background:var(--grijs);border-radius:5px;overflow:hidden;margin-top:10px}
+.balk i{display:block;height:100%;background:var(--groen)}
+.stippen{display:flex;gap:11px;margin-top:2px}
+.stippen b{width:22px;height:22px;border-radius:50%;background:var(--groen)}
+.stippen b.r{background:var(--rood)}
+.stippen b.x{background:var(--grijs);outline:2px solid var(--oranje)}
+
+.nav{position:fixed;left:0;right:0;bottom:0;background:var(--bg);border-top:1px solid #23272e;
+display:flex;max-width:30rem;margin:0 auto}
+.nav div{flex:1;text-align:center;padding:9px 0 8px;font-size:.74rem;color:var(--zacht)}
+.nav div svg{display:block;margin:0 auto 3px;width:26px;height:26px}
+.nav div.aan{color:var(--geel)}
+</style>
+
+<svg width="0" height="0" style="position:absolute"><defs>
+<symbol id="schild" viewBox="0 0 24 24"><path d="M12 3l7 3v5c0 5-3 8-7 10-4-2-7-5-7-10V6z"/></symbol>
+<symbol id="camera" viewBox="0 0 24 24"><path d="M4 8h3l2-2h6l2 2h3v11H4z"/><circle cx="12" cy="13" r="3.5"/></symbol>
+<symbol id="sensor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="1.6"/><path d="M8 8a5.5 5.5 0 0 0 0 8M16 8a5.5 5.5 0 0 1 0 8M5 5a10 10 0 0 0 0 14M19 5a10 10 0 0 1 0 14"/></symbol>
+<symbol id="data" viewBox="0 0 24 24"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></symbol>
+<symbol id="accu" viewBox="0 0 24 24"><rect x="3" y="7" width="16" height="10" rx="2"/><path d="M21 10.5v3M7 10v4M11 10v4"/></symbol>
+<symbol id="start" viewBox="0 0 24 24"><path d="M4 11l8-7 8 7v9H4z"/></symbol>
+<symbol id="live" viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="12" rx="2"/><path d="M10 10l4 2-4 2z"/></symbol>
+<symbol id="opn" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3" fill="currentColor"/></symbol>
+<symbol id="inst" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M18.4 5.6l-2.1 2.1M7.7 16.3l-2.1 2.1"/></symbol>
+</defs></svg>
+
+<a class="terug" href="./">&larr; Versies</a>
+<h1>Tuinalarm</h1>
+
+<div class="drie">
+  <button class="aan"><span class="naam">Bewaking</span><svg><use href="#schild"/></svg><span class="stand"></span></button>
+  <button class="aan"><span class="naam">Camera</span><svg><use href="#camera"/></svg><span class="stand"></span></button>
+  <button class="aan"><span class="naam">Sensoren</span><svg><use href="#sensor"/></svg><span class="stand"></span></button>
+</div>
+
+<div class="melding"><svg><use href="#sensor"/></svg><span>Terras: beweging</span><small>nu</small></div>
+
+<div class="kaart">
+  <svg><use href="#camera"/></svg>
+  <div class="inh rij2">
+    <div><div class="groot">12</div><div class="lab">PIR</div></div>
+    <div><div class="groot geel">3</div><div class="lab">personen</div></div>
+  </div>
+</div>
+
+<div class="kaart">
+  <svg><use href="#sensor"/></svg>
+  <div class="inh">
+    <div class="stippen"><b></b><b class="r"></b><b></b><b class="x"></b><b></b></div>
+    <div class="lab">5 sensoren</div>
+  </div>
+</div>
+
+<div class="kaart">
+  <svg><use href="#data"/></svg>
+  <div class="inh"><div class="groot">3,4 <span class="lab">GB over</span></div>
+    <div class="balk"><i style="width:66%"></i></div></div>
+</div>
+
+<div class="kaart">
+  <svg><use href="#accu"/></svg>
+  <div class="inh"><div class="groot">82<span class="lab">%</span></div>
+    <div class="balk"><i style="width:82%"></i></div></div>
+</div>
+
+<div class="nav">
+  <div class="aan"><svg><use href="#start"/></svg>start</div>
+  <div><svg><use href="#live"/></svg>live</div>
+  <div><svg><use href="#opn"/></svg>opnames</div>
+  <div><svg><use href="#inst"/></svg>instellingen</div>
+</div>
+
+<script>
+document.querySelectorAll(".drie button").forEach(b =>
+  b.addEventListener("click", () => b.classList.toggle("aan")));
+</script>
+</html>
