@@ -14,8 +14,7 @@
 
 <!-- ======================= START ======================= -->
 <section class="scherm" id="start">
-  <div class="titel">Tuinalarm</div>
-  <div class="onder goed">Alles in orde</div>
+  <div class="kopregel"><div class="titel">Tuinalarm</div><a class="status let-op" href="#aandacht">1 punt</a></div>
 
   <div class="kaart">
     <div class="schakel">
@@ -29,8 +28,6 @@
       <div class="tekst"><b>Sensoren</b><span data-aan="regels actief" data-uit="uit">regels actief</span></div><button class="knopje aan"></button></div>
   </div>
 
-  <div class="melding"><b>Geen contact met Schuur</b><span>Al 26 uur niets gehoord. Batterij leeg of te ver weg?</span></div>
-
   <div class="kop">CAMERA VANDAAG</div>
   <div class="naast">
     <div class="kaart midden"><div class="label">Bewegingen</div><div class="getal">12</div><div class="zacht">laatste 14:05</div></div>
@@ -39,11 +36,20 @@
 
   <div class="kop">TUIN</div>
   <div class="naast">
-    <div class="kaart midden" onclick="ga('tuin')"><div class="label">Sensoren</div><div class="getal">3<small>van 4</small></div><div class="zacht">Pad 14:02</div></div>
+    <div class="kaart midden" onclick="ga('tuin')"><div class="label">Sensoren<span class="teken">1</span></div><div class="getal">3<small>van 4</small></div><div class="let-op">Schuur: geen contact</div></div>
     <div class="kaart midden"><div class="label">Accu</div><div class="getal">78<small>%</small></div><div class="balk"><i style="width:78%"></i></div></div>
   </div>
 
   <button class="knop tweede" onclick="ga('live')">Live bekijken</button>
+</section>
+
+<!-- ---- start: wat aandacht nodig heeft ---- -->
+<section class="scherm" id="aandacht">
+  <a class="terug" href="#start">‹ Start</a>
+  <div class="titel">Aandacht</div>
+  <div class="onder">1 punt</div>
+  <div class="melding" onclick="ga('apparaat')"><b>Geen contact met Schuur</b><span>Al 26 uur niets gehoord. Batterij leeg of te ver weg?</span></div>
+  <div class="onder" style="margin-top:14px">Is alles in orde, dan staat er bovenaan op Start een groen bolletje met "In orde".</div>
 </section>
 
 <!-- ======================= LIVE ======================= -->
@@ -231,7 +237,7 @@
 
 <script>
 // schermen wisselen via het adres (#start, #tuin, ...); sub-schermen horen bij hun menuknop
-const HOORT = {apparaat:'tuin', regel:'tuin'};
+const HOORT = {apparaat:'tuin', regel:'tuin', aandacht:'start'};
 function toon(){
   const s = (location.hash || '#start').slice(1);
   const doel = document.getElementById(s) ? s : 'start';

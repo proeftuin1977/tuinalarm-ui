@@ -10,66 +10,78 @@
   --groen:#5cd68a; --groen-knop:#2e7d4f;
   --oranje:#ffb347; --rood:#ff5c5c;
   /* maten */
-  --rand:14px; --ruimte:14px; --klein:8px;
-  --rij:64px;          /* minimale hoogte van alles wat je aantikt */
+  --rand:12px; --ruimte:11px; --klein:6px;
+  --rij:50px;          /* minimale hoogte van alles wat je aantikt */
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{-webkit-text-size-adjust:100%}
 body{background:var(--achtergrond);color:var(--tekst);
-  font:18px/1.4 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
-  max-width:30rem;margin:0 auto;padding:16px 16px 96px}
+  font:16px/1.35 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  max-width:30rem;margin:0 auto;padding:12px 12px 84px}
 
 /* ---- tekst ---- */
-.titel{font-size:1.6rem;font-weight:700;margin:4px 2px 4px}
+.titel{font-size:1.35rem;font-weight:700;margin:2px 2px 2px}
 .onder{color:var(--zacht);font-size:.95rem;margin:0 2px var(--ruimte)}
-.kop{color:var(--zacht);font-size:.9rem;margin:22px 2px 8px}      /* kopje boven een groep kaarten */
+.kop{color:var(--zacht);font-size:.8rem;letter-spacing:.03em;margin:16px 2px 6px}      /* kopje boven een groep kaarten */
 .zacht{color:var(--zacht)}
 .goed{color:var(--groen)} .let-op{color:var(--oranje)} .fout{color:var(--rood)} .accent{color:var(--geel)}
 
 /* ---- kaart: het enige vlak ---- */
-.kaart{background:var(--kaart);border-radius:var(--rand);padding:var(--ruimte) 16px;margin-bottom:12px}
-.kaart > .label{color:var(--zacht);font-size:.95rem}
-.naast{display:flex;gap:12px}.naast > .kaart{flex:1;margin-bottom:12px}
+.kaart{background:var(--kaart);border-radius:var(--rand);padding:var(--ruimte) 14px;margin-bottom:10px}
+.kaart > .label{color:var(--zacht);font-size:.85rem}
+.naast{display:flex;gap:10px}.naast > .kaart{flex:1;margin-bottom:10px}
 
 /* ---- regel: label links, waarde rechts (vervangt opsommingen) ---- */
 .regel{display:flex;align-items:center;justify-content:space-between;gap:12px;
   min-height:var(--rij);border-top:1px solid var(--lijn)}
 .kaart > .regel:first-child,.kaart > .label + .regel{border-top:0}
-.regel .naam{font-size:1.05rem}
+.regel .naam{font-size:1rem}
 .regel .waarde{color:var(--zacht);text-align:right}
 .regel.tik{cursor:pointer}.regel.tik::after{content:"›";color:var(--zacht);font-size:1.4rem;margin-left:4px}
 
 /* ---- groot getal ---- */
-.getal{font-size:2.6rem;font-weight:700;line-height:1.1;margin-top:4px}
-.getal small{font-size:1rem;font-weight:400;color:var(--zacht);margin-left:4px}
+.getal{font-size:1.9rem;font-weight:700;line-height:1.1;margin-top:2px}
+.getal small{font-size:.85rem;font-weight:400;color:var(--zacht);margin-left:4px}
 .kaart.midden{text-align:center}
 
 /* ---- balk ---- */
-.balk{height:10px;background:var(--knop);border-radius:5px;margin-top:10px;overflow:hidden}
+.balk{height:8px;background:var(--knop);border-radius:5px;margin-top:10px;overflow:hidden}
 .balk > i{display:block;height:100%;background:var(--groen);border-radius:5px}
 .balk.let-op > i{background:var(--oranje)} .balk.fout > i{background:var(--rood)}
 
 /* ---- schakelaar ---- */
 .schakel{display:flex;align-items:center;gap:14px;min-height:var(--rij);border-top:1px solid var(--lijn)}
 .kaart > .schakel:first-child{border-top:0}
-.schakel svg{width:40px;height:40px;flex:none}
-.schakel .tekst{flex:1}.schakel .tekst b{display:block;font-size:1.15rem}
-.schakel .tekst span{color:var(--zacht);font-size:.9rem}
-.knopje{width:62px;height:34px;border-radius:17px;background:var(--knop);position:relative;flex:none;border:0}
-.knopje::after{content:"";position:absolute;top:3px;left:3px;width:28px;height:28px;border-radius:50%;background:var(--zacht);transition:.15s}
-.knopje.aan{background:var(--groen-knop)}.knopje.aan::after{left:31px;background:#fff}
+.schakel svg{width:28px;height:28px;flex:none}
+.schakel .tekst{flex:1}.schakel .tekst b{display:block;font-size:1.02rem}
+.schakel .tekst span{color:var(--zacht);font-size:.82rem}
+.knopje{width:50px;height:28px;border-radius:14px;background:var(--knop);position:relative;flex:none;border:0}
+.knopje::after{content:"";position:absolute;top:3px;left:3px;width:22px;height:22px;border-radius:50%;background:var(--zacht);transition:.15s}
+.knopje.aan{background:var(--groen-knop)}.knopje.aan::after{left:25px;background:#fff}
 
 /* ---- knoppen: drie soorten ---- */
-.knop{display:block;width:100%;min-height:56px;border-radius:12px;border:0;font:inherit;font-size:1.05rem;
+.knop{display:block;width:100%;min-height:48px;border-radius:12px;border:0;font:inherit;font-size:1rem;
   color:var(--tekst);background:var(--knop);margin-top:10px;padding:12px 16px;text-align:center;text-decoration:none}
 .knop.hoofd{background:var(--groen-knop);color:#fff}                       /* de belangrijkste actie */
 .knop.tweede{background:transparent;border:2px solid var(--geel);color:var(--geel)} /* tweede keus */
 .knop.gevaar{background:transparent;border:2px solid var(--rood);color:var(--rood)} /* verwijderen, stoppen */
 
+/* ---- kopregel met status: titel links, stand rechts (tik = wat aandacht nodig heeft) ---- */
+.kopregel{display:flex;align-items:center;justify-content:space-between;margin:2px 2px 10px}
+.kopregel .titel{margin:0}
+.status{display:inline-flex;align-items:center;gap:7px;border-radius:16px;padding:5px 11px;
+  background:var(--kaart);font-size:.85rem;color:var(--groen);text-decoration:none}
+.status::before{content:"";width:9px;height:9px;border-radius:50%;background:currentColor}
+.status.let-op{color:var(--oranje)} .status.fout{color:var(--rood)}
+/* klein bolletje met getal achter een kaartlabel: hier is iets */
+.teken{display:inline-block;min-width:18px;height:18px;border-radius:9px;background:var(--oranje);color:#121417;
+  font-size:.72rem;font-weight:700;text-align:center;line-height:18px;padding:0 5px;margin-left:6px;vertical-align:1px}
+.teken.fout{background:var(--rood)}
+
 /* ---- melding bovenaan (alleen als er iets is) ---- */
 .melding{border-radius:var(--rand);padding:14px 16px;margin-bottom:12px;background:var(--kaart);border-left:6px solid var(--oranje)}
 .melding.fout{border-left-color:var(--rood)} .melding.goed{border-left-color:var(--groen)}
-.melding b{display:block}.melding span{color:var(--zacht);font-size:.95rem}
+.melding b{display:block}.melding span{color:var(--zacht);font-size:.88rem}
 
 /* ---- keuze (bv. sensoren kiezen in een regel) ---- */
 .keuze{display:flex;align-items:center;gap:14px;min-height:var(--rij);border-top:1px solid var(--lijn)}
@@ -81,8 +93,8 @@ body{background:var(--achtergrond);color:var(--tekst);
 /* ---- menu onderaan ---- */
 .menu{position:fixed;left:0;right:0;bottom:0;background:var(--kaart);display:flex;justify-content:center;
   padding:8px 4px calc(8px + env(safe-area-inset-bottom))}
-.menu a{flex:1;max-width:6rem;text-align:center;color:var(--zacht);text-decoration:none;font-size:.78rem}
-.menu svg{width:28px;height:28px;display:block;margin:0 auto 2px}
+.menu a{flex:1;max-width:6rem;text-align:center;color:var(--zacht);text-decoration:none;font-size:.72rem}
+.menu svg{width:24px;height:24px;display:block;margin:0 auto 2px}
 .menu a.actief{color:var(--geel)}
 
 /* ---- pictogrammen: lijn, geen vulling ---- */
