@@ -4,7 +4,7 @@
 :root{
   color-scheme:dark;
   /* kleuren (palet van de roosterapp) */
-  --achtergrond:#121417; --kaart:#1e2228; --knop:#3a4048; --lijn:#2c3239;
+  --achtergrond:#121417; --kaart:#1e2228; --knop:#3a4048; --lijn:#3a424c;
   --tekst:#e8eaed; --zacht:#9aa0a6;
   --geel:#f2c230;   /* accent: actief, keuze, aandacht. Nooit een knopvlak. */
   --groen:#5cd68a; --groen-knop:#2e7d4f;
@@ -49,6 +49,9 @@ body{background:var(--achtergrond);color:var(--tekst);
 /* kleur van een getal: geel = gewone telling, groen = goed, oranje = let op, rood = fout */
 .getal.accent{color:var(--geel)} .getal.goed{color:var(--groen)} .getal.let-op{color:var(--oranje)}
 
+/* ---- smalle balk in een regel (compact, bv. data) ---- */
+.regel .balk{flex:0 0 38%;margin-top:0;height:6px}
+
 /* ---- balk ---- */
 .balk{height:8px;background:var(--knop);border-radius:5px;margin-top:10px;overflow:hidden}
 .balk > i{display:block;height:100%;background:var(--groen);border-radius:5px}
@@ -74,7 +77,7 @@ body{background:var(--achtergrond);color:var(--tekst);
 /* ---- kopregel met status: titel links, stand rechts (tik = wat aandacht nodig heeft) ---- */
 .kopregel{display:flex;align-items:center;justify-content:space-between;margin:2px 2px 10px}
 .kopregel .titel{margin:0}
-.status{display:inline-flex;align-items:center;gap:7px;border-radius:16px;padding:5px 11px;
+.status{display:inline-flex;align-items:center;gap:7px;border-radius:16px;padding:4px 11px;border:1.5px solid currentColor;
   background:var(--kaart);font-size:.85rem;color:var(--groen);text-decoration:none}
 .status::before{content:"";width:9px;height:9px;border-radius:50%;background:currentColor}
 .status.let-op{color:var(--oranje)} .status.fout{color:var(--rood)}
@@ -99,7 +102,7 @@ body{background:var(--achtergrond);color:var(--tekst);
 .menu{position:fixed;left:0;right:0;bottom:0;background:var(--kaart);display:flex;justify-content:center;
   padding:8px 4px calc(8px + env(safe-area-inset-bottom))}
 .menu a{flex:1;max-width:6rem;text-align:center;color:var(--zacht);text-decoration:none;font-size:.72rem}
-.menu svg{width:24px;height:24px;display:block;margin:0 auto 2px}
+.menu svg{width:30px;height:30px;display:block;margin:0 auto 2px}
 .menu a.actief{color:var(--geel)}
 
 /* ---- pictogrammen: lijn, geen vulling ---- */
