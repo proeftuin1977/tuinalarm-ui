@@ -1,0 +1,99 @@
+<!doctype html><html lang="nl"><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#121417">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="stylesheet" href="bouwdoos.css">
+<title>Opzet 2: bouwdoos</title>
+<body>
+<a class="terug" href="index.html">‹ Versies</a>
+<div class="titel">Opzet 2: bouwdoos</div>
+<div class="onder">Alle onderdelen waar elk scherm uit gebouwd wordt. Niets anders. Verzonnen voorbeeldwaarden.</div>
+
+<div class="kop">1  SCHERMTITEL</div>
+<div class="uitleg">Bovenaan elk scherm: titel groot, daaronder een korte zachte regel.</div>
+<div class="voorbeeld"><div class="titel">Tuin</div><div class="onder">3 sensoren, alles in orde</div></div>
+
+<div class="kop">2  SCHAKELAARS</div>
+<div class="uitleg">Altijd samen in een kaart. Naam, korte stand eronder, pictogram alleen hier.</div>
+<div class="kaart">
+  <div class="schakel">
+    <svg class="p accent" viewBox="0 0 24 24"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="M9 12l2 2 4-4"/></svg>
+    <div class="tekst"><b>Bewaking</b><span class="goed">aan</span></div><button class="knopje aan"></button></div>
+  <div class="schakel">
+    <svg class="p accent" viewBox="0 0 24 24"><rect x="3" y="7" width="13" height="10" rx="2"/><path d="M16 11l5-3v8l-5-3"/></svg>
+    <div class="tekst"><b>Camera</b><span class="goed">luistert</span></div><button class="knopje aan"></button></div>
+  <div class="schakel">
+    <svg class="p" style="color:var(--zacht)" viewBox="0 0 24 24"><circle cx="12" cy="12" r="2"/><path d="M8 8a6 6 0 0 0 0 8M16 8a6 6 0 0 1 0 8M5 5a10 10 0 0 0 0 14M19 5a10 10 0 0 1 0 14"/></svg>
+    <div class="tekst"><b>Sensoren</b><span>uit</span></div><button class="knopje"></button></div>
+</div>
+
+<div class="kop">3  MELDING</div>
+<div class="uitleg">Alleen als er iets is. Oranje = let op, rood = fout, groen = gelukt.</div>
+<div class="melding"><b>Geen contact met Pad</b><span>Al 26 uur niets gehoord. Batterij leeg of te ver weg?</span></div>
+<div class="melding fout"><b>Stick niet bereikbaar</b><span>Sinds 14:20. Regels op de stick werken wel door.</span></div>
+<div class="melding goed"><b>Regel opgeslagen</b><span>De stick heeft hem bevestigd.</span></div>
+
+<div class="kop">4  GROOT GETAL</div>
+<div class="uitleg">Een kaart, een getal, een korte regel. Twee naast elkaar mag.</div>
+<div class="naast">
+  <div class="kaart midden"><div class="label">Bewegingen</div><div class="getal">12</div><div class="zacht">vandaag</div></div>
+  <div class="kaart midden"><div class="label">Personen</div><div class="getal fout">1</div><div class="zacht">om 03:12</div></div>
+</div>
+
+<div class="kop">5  GETAL MET BALK</div>
+<div class="uitleg">Voor iets dat opraakt: accu, data.</div>
+<div class="kaart"><div class="label">Accu</div><div class="getal">78<small>%</small></div><div class="zacht">13,2 V, zon 70 W</div><div class="balk"><i style="width:78%"></i></div></div>
+<div class="kaart"><div class="label">Data camera</div><div class="getal">2,4<small>GB over</small></div><div class="balk let-op"><i style="width:24%"></i></div></div>
+
+<div class="kop">6  REGELS MET LABEL EN WAARDE</div>
+<div class="uitleg">In plaats van opsommingen. Met › als je erop kunt tikken.</div>
+<div class="kaart">
+  <div class="label">Apparaten</div>
+  <div class="regel tik"><span class="naam">Pad</span><span class="waarde accent">beweging 14:02</span></div>
+  <div class="regel tik"><span class="naam">Serredeur</span><span class="waarde">dicht, 92%</span></div>
+  <div class="regel tik"><span class="naam">Sirene</span><span class="waarde">alleen licht, 66%</span></div>
+  <div class="regel tik"><span class="naam">Schuur</span><span class="waarde fout">geen contact</span></div>
+</div>
+
+<div class="kop">7  KEUZES</div>
+<div class="uitleg">Voor kiezen uit een lijst, bijvoorbeeld welke sensoren in een regel.</div>
+<div class="kaart">
+  <div class="keuze"><div class="vinkje aan"></div><span>Pad</span></div>
+  <div class="keuze"><div class="vinkje aan"></div><span>Serredeur</span></div>
+  <div class="keuze"><div class="vinkje"></div><span>Schuur</span></div>
+</div>
+
+<div class="kop">8  KNOPPEN</div>
+<div class="uitleg">Groen = de hoofdactie (een per scherm). Grijs = gewoon. Geel omlijnd = tweede keus. Rood omlijnd = verwijderen of stoppen.</div>
+<div class="voorbeeld">
+  <button class="knop hoofd">Opslaan</button>
+  <button class="knop">Annuleren</button>
+  <button class="knop tweede">Live bekijken</button>
+  <button class="knop gevaar">Regel verwijderen</button>
+</div>
+
+<div class="kop">9  KOPJE BOVEN EEN GROEP</div>
+<div class="uitleg">Klein en zacht, in hoofdletters, om kaarten te groeperen.</div>
+<div class="voorbeeld"><div class="kop" style="margin-top:0">CAMERA VANDAAG</div></div>
+
+<div class="kop">10  MENU ONDERAAN</div>
+<div class="uitleg">Altijd vijf knoppen. Geel = waar je bent. Zie onderaan deze pagina.</div>
+
+<div class="kop">VASTE AFSPRAKEN</div>
+<div class="kaart">
+  <div class="regel"><span class="naam">Kleuren</span><span class="waarde">alleen het palet, geel nooit als vlak</span></div>
+  <div class="regel"><span class="naam">Pictogrammen</span><span class="waarde">alleen bij schakelaars en menu</span></div>
+  <div class="regel"><span class="naam">Tikken</span><span class="waarde">alles minstens 64 px hoog</span></div>
+  <div class="regel"><span class="naam">Lijsten</span><span class="waarde">regels in een kaart, geen opsomming</span></div>
+  <div class="regel"><span class="naam">Inspringen</span><span class="waarde">nooit</span></div>
+  <div class="regel"><span class="naam">Woorden</span><span class="waarde">voluit, geen afkortingen</span></div>
+</div>
+
+<nav class="menu">
+  <a href="#"><svg class="p" viewBox="0 0 24 24"><path d="M4 11l8-7 8 7v9h-5v-6H9v6H4z"/></svg>Start</a>
+  <a href="#"><svg class="p" viewBox="0 0 24 24"><path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg>Live</a>
+  <a href="#"><svg class="p" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Gebeurd</a>
+  <a class="actief" href="#"><svg class="p" viewBox="0 0 24 24"><path d="M12 21V11"/><path d="M12 11c0-4 3-7 8-7 0 5-3 8-8 7z"/><path d="M12 14c0-3-2-5-7-5 0 4 2 6 7 5z"/></svg>Tuin</a>
+  <a href="#"><svg class="p" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M2 12h3M19 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"/></svg>Instellingen</a>
+</nav>
+</body></html>
