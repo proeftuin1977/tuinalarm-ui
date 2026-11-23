@@ -1,0 +1,269 @@
+<!doctype html><html lang="nl"><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#121417">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icon-192.png">
+<link rel="stylesheet" href="basis-1.css">
+<title>Tuinalarm basis 1</title>
+<style>
+/* alleen schermwissel; alle opmaak komt uit bouwdoos.css */
+.scherm{display:none}.scherm.zicht{display:block}
+.beeld{aspect-ratio:16/9;background:#000;border-radius:var(--rand);display:flex;align-items:center;justify-content:center;color:var(--zacht);margin-bottom:12px}
+</style>
+<body>
+
+<!-- ======================= START ======================= -->
+<section class="scherm" id="start">
+  <div class="kopregel"><div class="titel">Tuinalarm</div><a class="status let-op" href="#aandacht">1 punt</a></div>
+
+  <div class="kaart">
+    <div class="schakel">
+      <svg class="p accent" viewBox="0 0 24 24"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="M9 12l2 2 4-4"/></svg>
+      <div class="tekst"><b>Bewaking</b><span data-aan="camera en sensoren aan" data-uit="Ik ben er: alles uit">camera en sensoren aan</span></div><button class="knopje aan"></button></div>
+    <div class="schakel">
+      <svg class="p accent" viewBox="0 0 24 24"><rect x="3" y="7" width="13" height="10" rx="2"/><path d="M16 11l5-3v8l-5-3"/></svg>
+      <div class="tekst"><b>Camera</b><span data-aan="luistert" data-uit="uit">luistert</span></div><button class="knopje aan"></button></div>
+    <div class="schakel">
+      <svg class="p accent" viewBox="0 0 24 24"><circle cx="12" cy="12" r="2"/><path d="M8 8a6 6 0 0 0 0 8M16 8a6 6 0 0 1 0 8M5 5a10 10 0 0 0 0 14M19 5a10 10 0 0 1 0 14"/></svg>
+      <div class="tekst"><b>Sensoren</b><span data-aan="regels actief" data-uit="uit">regels actief</span></div><button class="knopje aan"></button></div>
+  </div>
+
+  <div class="naast">
+    <div class="kaart midden" onclick="ga('gebeurd')"><div class="label">Bewegingen</div><div class="getal accent">12</div><div class="zacht">laatste 14:05</div></div>
+    <div class="kaart midden" onclick="ga('gebeurd')"><div class="label">Personen</div><div class="getal fout">1</div><div class="zacht">om 03:12</div></div>
+  </div>
+  <div class="naast">
+    <div class="kaart midden" onclick="ga('gebeurd')"><div class="label">Regels</div><div class="getal accent">2</div><div class="zacht">Pad 14:02</div></div>
+    <div class="kaart midden" onclick="ga('tuin')"><div class="label">Accu</div><div class="getal goed">78<small>%</small></div><div class="balk"><i style="width:78%"></i></div></div>
+  </div>
+
+  <button class="knop tweede" onclick="ga('live')">Live bekijken</button>
+</section>
+
+<!-- ---- start: wat aandacht nodig heeft ---- -->
+<section class="scherm" id="aandacht">
+  <a class="terug" href="#start">‹ Start</a>
+  <div class="titel">Aandacht</div>
+  <div class="onder">1 punt</div>
+  <div class="melding" onclick="ga('apparaat')"><b>Geen contact met Schuur</b><span>Al 26 uur niets gehoord. Batterij leeg of te ver weg?</span></div>
+  <div class="onder" style="margin-top:14px">Is alles in orde, dan staat er bovenaan op Start een groen bolletje met "In orde".</div>
+</section>
+
+<!-- ======================= LIVE ======================= -->
+<section class="scherm" id="live">
+  <div class="titel">Live</div>
+  <div class="onder">Camera tuin, verbonden</div>
+  <div class="beeld">camerabeeld</div>
+  <div class="kaart">
+    <div class="schakel">
+      <svg class="p accent" viewBox="0 0 24 24"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg>
+      <div class="tekst"><b>Praten</b><span data-aan="de camera spreekt" data-uit="uit">uit</span></div><button class="knopje"></button></div>
+    <div class="schakel">
+      <svg class="p accent" viewBox="0 0 24 24"><path d="M4 15v-3a8 8 0 0 1 16 0v3"/><rect x="3" y="14" width="4" height="6" rx="1.5"/><rect x="17" y="14" width="4" height="6" rx="1.5"/></svg>
+      <div class="tekst"><b>Luisteren</b><span data-aan="je hoort de tuin" data-uit="uit">je hoort de tuin</span></div><button class="knopje aan"></button></div>
+    <div class="schakel">
+      <svg class="p accent" viewBox="0 0 24 24"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-4 10.5c.8.8 1 1.5 1 2.5h6c0-1 .2-1.7 1-2.5A6 6 0 0 0 12 3z"/></svg>
+      <div class="tekst"><b>Lamp</b><span data-aan="aan" data-uit="uit">uit</span></div><button class="knopje"></button></div>
+  </div>
+  <div class="kaart"><div class="regel tik"><span class="naam">Camera draaien</span><span class="waarde"></span></div></div>
+  <button class="knop">Opnieuw verbinden</button>
+</section>
+
+<!-- ======================= GEBEURD ======================= -->
+<section class="scherm" id="gebeurd">
+  <div class="titel">Gebeurd</div>
+  <div class="onder">Alles wat er was, nieuwste bovenaan</div>
+  <div class="kaart"><div class="regel tik" onclick="filter(this)"><span class="naam">Toon</span><span class="waarde accent" id="filtertekst">alles</span></div></div>
+
+  <div class="kop">VANDAAG</div>
+  <div class="kaart">
+    <div class="regel tik" data-soort="camera"><span class="naam">14:05  Beweging bij de camera</span><span class="waarde">opname</span></div>
+    <div class="regel tik" data-soort="regel"><span class="naam">14:02  Pad: sirene licht</span><span class="waarde">regel</span></div>
+    <div class="regel" data-soort="sensor"><span class="naam">11:40  Serredeur open</span><span class="waarde">sensor</span></div>
+    <div class="regel tik" data-soort="persoon"><span class="naam fout">03:12  Persoon bij de camera</span><span class="waarde fout">opname</span></div>
+  </div>
+  <div class="kop">GISTEREN</div>
+  <div class="kaart">
+    <div class="regel" data-soort="sensor"><span class="naam let-op">21:15  Geen contact met Schuur</span><span class="waarde">melding</span></div>
+    <div class="regel tik" data-soort="camera"><span class="naam">17:48  Beweging bij de camera</span><span class="waarde">opname</span></div>
+    <div class="regel tik" data-soort="regel"><span class="naam">06:31  Pad en Serredeur: licht en camera</span><span class="waarde">regel</span></div>
+  </div>
+</section>
+
+<!-- ======================= TUIN ======================= -->
+<section class="scherm" id="tuin">
+  <div class="titel">Tuin</div>
+  <div class="onder">4 sensoren, 1 zonder contact</div>
+
+  <div class="kop">APPARATEN</div>
+  <div class="kaart">
+    <div class="regel tik" onclick="ga('apparaat')"><span class="naam">Pad</span><span class="waarde accent">beweging 14:02</span></div>
+    <div class="regel tik"><span class="naam">Serredeur</span><span class="waarde">dicht, 92%</span></div>
+    <div class="regel tik"><span class="naam">Achterom</span><span class="waarde">rustig, 100%</span></div>
+    <div class="regel tik"><span class="naam">Schuur</span><span class="waarde fout">geen contact</span></div>
+    <div class="regel tik"><span class="naam">Sirene</span><span class="waarde">alleen licht, 66%</span></div>
+    <div class="regel tik"><span class="naam">Accu</span><span class="waarde">78%, zon 70 W</span></div>
+  </div>
+
+  <div class="kop">REGELS</div>
+  <div class="kaart">
+    <div class="regel tik" onclick="ga('regel')"><span class="naam">Pad: licht</span><span class="waarde goed">aan</span></div>
+    <div class="regel tik" onclick="ga('regel')"><span class="naam">Pad en Serredeur: licht en camera</span><span class="waarde goed">aan</span></div>
+    <div class="regel tik" onclick="ga('regel')"><span class="naam">Achterom 's nachts: geluid</span><span class="waarde">uit</span></div>
+  </div>
+  <button class="knop tweede" onclick="ga('regel')">Nieuwe regel</button>
+
+  <div class="kop">BEHEER</div>
+  <div class="kaart">
+    <div class="regel tik"><span class="naam">Nieuw apparaat koppelen</span><span class="waarde"></span></div>
+    <div class="regel tik"><span class="naam">Meterkast (Zigbee2MQTT)</span><span class="waarde"></span></div>
+    <div class="regel tik"><span class="naam">Noodweg: wifi van de stick</span><span class="waarde"></span></div>
+  </div>
+</section>
+
+<!-- ---- tuin: een apparaat ---- -->
+<section class="scherm" id="apparaat">
+  <a class="terug" href="#tuin">‹ Tuin</a>
+  <div class="titel">Pad</div>
+  <div class="onder">Bewegingsmelder</div>
+  <div class="kaart">
+    <div class="regel"><span class="naam">Laatste beweging</span><span class="waarde accent">14:02</span></div>
+    <div class="regel"><span class="naam">Batterij</span><span class="waarde">92%</span></div>
+    <div class="regel"><span class="naam">Contact</span><span class="waarde goed">goed</span></div>
+  </div>
+  <div class="kop">INSTELLINGEN</div>
+  <div class="kaart">
+    <div class="regel tik"><span class="naam">Gevoeligheid</span><span class="waarde">middel</span></div>
+    <div class="regel tik"><span class="naam">Aan-tijd</span><span class="waarde">60 seconden</span></div>
+    <div class="regel tik"><span class="naam">Naam</span><span class="waarde">Pad</span></div>
+  </div>
+  <div class="kop">GEBRUIKT IN</div>
+  <div class="kaart">
+    <div class="regel tik" onclick="ga('regel')"><span class="naam">Pad: licht</span><span class="waarde goed">aan</span></div>
+    <div class="regel tik" onclick="ga('regel')"><span class="naam">Pad en Serredeur: licht en camera</span><span class="waarde goed">aan</span></div>
+  </div>
+  <button class="knop gevaar">Apparaat verwijderen</button>
+</section>
+
+<!-- ---- tuin: een regel ---- -->
+<section class="scherm" id="regel">
+  <a class="terug" href="#tuin">‹ Tuin</a>
+  <div class="titel">Regel</div>
+  <div class="onder">Wordt op de stick bewaard en uitgevoerd</div>
+
+  <div class="kaart">
+    <div class="schakel"><div class="tekst"><b>Regel aan</b><span data-aan="gaat af als de sensoren iets zien" data-uit="doet niets">gaat af als de sensoren iets zien</span></div><button class="knopje aan"></button></div>
+    <div class="regel tik"><span class="naam">Naam</span><span class="waarde">Pad en Serredeur</span></div>
+  </div>
+
+  <div class="kop">ALS DEZE SENSOREN IETS ZIEN</div>
+  <div class="kaart">
+    <div class="keuze"><div class="vinkje aan"></div><span>Pad</span></div>
+    <div class="keuze"><div class="vinkje aan"></div><span>Serredeur</span></div>
+    <div class="keuze"><div class="vinkje"></div><span>Achterom</span></div>
+    <div class="keuze"><div class="vinkje"></div><span>Schuur</span></div>
+    <div class="regel tik"><span class="naam">Tegelijk binnen</span><span class="waarde">30 seconden</span></div>
+  </div>
+
+  <div class="kop">DAN</div>
+  <div class="kaart">
+    <div class="keuze"><div class="vinkje aan"></div><span>Sirene: licht</span></div>
+    <div class="keuze"><div class="vinkje"></div><span>Sirene: geluid</span></div>
+    <div class="keuze"><div class="vinkje aan"></div><span>Camera wekken</span></div>
+    <div class="regel tik"><span class="naam">Hoe lang</span><span class="waarde">1 minuut</span></div>
+  </div>
+
+  <div class="kop">WANNEER</div>
+  <div class="kaart">
+    <div class="keuze"><div class="vinkje"></div><span>Altijd</span></div>
+    <div class="regel tik"><span class="naam">Van</span><span class="waarde">22:00</span></div>
+    <div class="regel tik"><span class="naam">Tot</span><span class="waarde">06:00</span></div>
+  </div>
+
+  <button class="knop hoofd" onclick="ga('tuin')">Opslaan</button>
+  <button class="knop" onclick="ga('tuin')">Annuleren</button>
+  <button class="knop gevaar">Regel verwijderen</button>
+</section>
+
+<!-- ======================= INSTELLINGEN ======================= -->
+<section class="scherm" id="instellingen">
+  <div class="titel">Instellingen</div>
+  <div class="onder">Versie 3.0 (proef)</div>
+
+  <div class="kop">CAMERA</div>
+  <div class="kaart">
+    <div class="regel tik"><span class="naam">Account en camera</span><span class="waarde goed">verbonden</span></div>
+    <div class="regel tik"><span class="naam">Nacht</span><span class="waarde">22:00 tot 07:00</span></div>
+    <div class="regel tik"><span class="naam">Sirene van de camera</span><span class="waarde">alleen 's nachts</span></div>
+    <div class="regel tik"><span class="naam">Bewegingsgevoeligheid</span><span class="waarde">midden</span></div>
+    <div class="regel tik"><span class="naam">Nachtzicht</span><span class="waarde">automatisch</span></div>
+    <div class="regel tik"><span class="naam">Volume</span><span class="waarde">80%</span></div>
+    <div class="regel tik"><span class="naam">Draaien</span><span class="waarde">kleine stappen</span></div>
+    <div class="regel tik"><span class="naam">Klok gelijkzetten</span><span class="waarde"></span></div>
+  </div>
+
+  <div class="kop">OPNAMES</div>
+  <div class="kaart">
+    <div class="regel tik"><span class="naam">Bewaren op de telefoon</span><span class="waarde">tot 2 GB</span></div>
+  </div>
+
+  <div class="kop">DATA</div>
+  <div class="kaart"><div class="label">SIM camera</div><div class="getal">2,4<small>GB over</small></div><div class="balk let-op"><i style="width:24%"></i></div></div>
+  <div class="kaart"><div class="label">SIM stick</div><div class="getal">0,3<small>GB deze maand</small></div><div class="balk"><i style="width:6%"></i></div></div>
+
+  <div class="kop">TELEFOON</div>
+  <div class="kaart">
+    <div class="regel tik"><span class="naam">Toestemmingen</span><span class="waarde goed">in orde</span></div>
+    <div class="regel tik"><span class="naam">Batterijbesparing</span><span class="waarde goed">uit</span></div>
+  </div>
+
+  <div class="kop">ONDERHOUD</div>
+  <div class="kaart">
+    <div class="regel tik"><span class="naam">Test en logboek</span><span class="waarde"></span></div>
+    <div class="regel tik" onclick="location.href='index.html'"><span class="naam">Terug naar het versiemenu</span><span class="waarde"></span></div>
+  </div>
+</section>
+
+<nav class="menu">
+  <a href="#start" data-s="start"><svg class="p" viewBox="0 0 24 24"><path d="M4 11l8-7 8 7v9h-5v-6H9v6H4z"/></svg>Start</a>
+  <a href="#live" data-s="live"><svg class="p" viewBox="0 0 24 24"><path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg>Live</a>
+  <a href="#gebeurd" data-s="gebeurd"><svg class="p" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Gebeurd</a>
+  <a href="#tuin" data-s="tuin"><svg class="p" viewBox="0 0 24 24"><path d="M12 21V11"/><path d="M12 11c0-4 3-7 8-7 0 5-3 8-8 7z"/><path d="M12 14c0-3-2-5-7-5 0 4 2 6 7 5z"/></svg>Tuin</a>
+  <a href="#instellingen" data-s="instellingen"><svg class="p" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M2 12h3M19 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"/></svg>Instellingen</a>
+</nav>
+
+<script>
+// schermen wisselen via het adres (#start, #tuin, ...); sub-schermen horen bij hun menuknop
+const HOORT = {apparaat:'tuin', regel:'tuin', aandacht:'start'};
+function toon(){
+  const s = (location.hash || '#start').slice(1);
+  const doel = document.getElementById(s) ? s : 'start';
+  document.querySelectorAll('.scherm').forEach(x => x.classList.toggle('zicht', x.id === doel));
+  const knop = HOORT[doel] || doel;
+  document.querySelectorAll('.menu a').forEach(a => a.classList.toggle('actief', a.dataset.s === knop));
+  window.scrollTo(0, 0);
+}
+function ga(s){ location.hash = s; }
+addEventListener('hashchange', toon); toon();
+
+// schakelaars en vinkjes doen echt iets (alleen hier op het scherm)
+document.querySelectorAll('.knopje').forEach(k => k.addEventListener('click', () => {
+  k.classList.toggle('aan');
+  const t = k.parentElement.querySelector('.tekst span');
+  if (t && t.dataset.aan) { const aan = k.classList.contains('aan');
+    t.textContent = aan ? t.dataset.aan : t.dataset.uit; t.className = aan ? 'goed' : ''; }
+}));
+document.querySelectorAll('.keuze').forEach(k => k.addEventListener('click', () => k.querySelector('.vinkje').classList.toggle('aan')));
+
+// filter in Gebeurd: alles, personen, regels, camera
+const FILTERS = [['alles', null], ['personen', ['persoon']], ['regels', ['regel']], ['camera', ['camera','persoon']], ['sensoren', ['sensor']]];
+let f = 0;
+function filter(){
+  f = (f + 1) % FILTERS.length;
+  document.getElementById('filtertekst').textContent = FILTERS[f][0];
+  document.querySelectorAll('#gebeurd [data-soort]').forEach(r =>
+    r.style.display = !FILTERS[f][1] || FILTERS[f][1].includes(r.dataset.soort) ? '' : 'none');
+}
+if ('serviceWorker' in navigator) navigator.serviceWorker.register('sw.js');
+</script>
+</body></html>
