@@ -44,8 +44,7 @@ body{background:var(--achtergrond);color:var(--tekst);
 .getal small{font-size:.85rem;font-weight:400;color:var(--zacht);margin-left:4px}
 .kaart.midden{text-align:center}
 /* in een middenkaart staat het getal zelf precies in het midden; een eenheid (%, GB) hangt er rechts naast */
-/* vaste breedte en rechts uitgelijnd: de laatste cijfers van kaarten boven elkaar staan recht onder elkaar */
-.kaart.midden .getal{position:relative;display:inline-block;min-width:2.4ch;text-align:right;font-variant-numeric:tabular-nums}
+.kaart.midden .getal{position:relative;display:inline-block}
 .kaart.midden .getal small{position:absolute;left:100%;bottom:.3em;margin-left:3px;white-space:nowrap}
 /* kleur van een getal: geel = gewone telling, groen = goed, oranje = let op, rood = fout */
 .getal.accent{color:var(--geel)} .getal.goed{color:var(--groen)} .getal.let-op{color:var(--oranje)}
