@@ -1,0 +1,114 @@
+<!doctype html><html lang="nl"><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#121417">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icon-192.png">
+<link rel="stylesheet" href="bouwdoos.css">
+<title>Apparaten ontwerp</title>
+<style>
+/* alleen schermwissel en variantkeuze; alle opmaak komt uit bouwdoos.css */
+.scherm{display:none}.scherm.zicht{display:block}
+.varianten{display:flex;gap:8px;margin:0 0 12px}
+.varianten a{flex:1;text-align:center;padding:9px 6px;border-radius:20px;background:var(--knop);color:var(--tekst);text-decoration:none;font-size:.9rem}
+.varianten a.actief{background:transparent;border:2px solid var(--geel);color:var(--geel);padding:7px 6px}
+</style>
+<body>
+<a class="terug" href="index.html">‹ Versies</a>
+
+<!-- ======================= VARIANT A: een kaart per apparaat ======================= -->
+<section class="scherm" id="a">
+  <div class="varianten"><a class="actief" href="#a">A: kaart per apparaat</a><a href="#b">B: alles in een kaart</a></div>
+  <div class="kopregel"><div class="titel">Apparaten</div><span class="status let-op">1 punt</span></div>
+
+  <div class="kaart ding" onclick="ga('pad')">
+    <svg class="p accent" viewBox="0 0 24 24"><circle cx="12" cy="12" r="2"/><path d="M8 8a6 6 0 0 0 0 8M16 8a6 6 0 0 1 0 8"/></svg>
+    <div class="tekst"><b>Pad</b><span class="accent">beweging om 14:02</span></div>
+    <div class="rechts">92%</div>
+  </div>
+  <div class="kaart ding">
+    <svg class="p accent" viewBox="0 0 24 24"><path d="M6 21V4h10v17"/><path d="M3 21h18"/><circle cx="13" cy="13" r=".8"/></svg>
+    <div class="tekst"><b>Serredeur</b><span>dicht, laatst open 11:40</span></div>
+    <div class="rechts">88%</div>
+  </div>
+  <div class="kaart ding">
+    <svg class="p accent" viewBox="0 0 24 24"><circle cx="12" cy="12" r="2"/><path d="M8 8a6 6 0 0 0 0 8M16 8a6 6 0 0 1 0 8"/></svg>
+    <div class="tekst"><b>Achterom</b><span>rustig sinds gisteren</span></div>
+    <div class="rechts">100%</div>
+  </div>
+  <div class="kaart ding">
+    <svg class="p let-op" viewBox="0 0 24 24"><circle cx="12" cy="12" r="2"/><path d="M8 8a6 6 0 0 0 0 8M16 8a6 6 0 0 1 0 8"/></svg>
+    <div class="tekst"><b>Schuur</b><span class="let-op">geen contact sinds 08:15</span></div>
+    <div class="rechts let-op">12%</div>
+  </div>
+  <div class="kaart ding">
+    <svg class="p accent" viewBox="0 0 24 24"><path d="M6 15V10a6 6 0 0 1 12 0v5"/><path d="M4 15h16v3H4z"/><path d="M12 2v1M3 6l1 1M21 6l-1 1"/></svg>
+    <div class="tekst"><b>Sirene</b><span>klaar, alleen licht</span></div>
+    <div class="rechts">66%</div>
+  </div>
+  <div class="kaart ding">
+    <svg class="p goed" viewBox="0 0 24 24"><rect x="3" y="7" width="16" height="11" rx="2"/><path d="M19 11h2v3h-2"/><path d="M7 12.5h8"/></svg>
+    <div class="tekst"><b>Accu</b><span>13,2 V, zon 70 W</span></div>
+    <div class="rechts goed">78%</div>
+  </div>
+
+  <div class="kaart">
+    <div class="regel tik"><span class="naam">Koppelen en namen wijzigen</span><span class="waarde">meterkast</span></div>
+  </div>
+</section>
+
+<!-- ======================= VARIANT B: alles in een kaart ======================= -->
+<section class="scherm" id="b">
+  <div class="varianten"><a href="#a">A: kaart per apparaat</a><a class="actief" href="#b">B: alles in een kaart</a></div>
+  <div class="kopregel"><div class="titel">Apparaten</div><span class="status let-op">1 punt</span></div>
+
+  <div class="kaart">
+    <div class="regel tik" onclick="ga('pad')"><span class="naam">Pad</span><span class="waarde accent">beweging 14:02</span></div>
+    <div class="regel tik"><span class="naam">Serredeur</span><span class="waarde">dicht</span></div>
+    <div class="regel tik"><span class="naam">Achterom</span><span class="waarde">rustig</span></div>
+    <div class="regel tik"><span class="naam">Schuur</span><span class="waarde let-op">geen contact</span></div>
+    <div class="regel tik"><span class="naam">Sirene</span><span class="waarde">klaar, licht</span></div>
+    <div class="regel tik"><span class="naam">Accu</span><span class="waarde goed">78%, zon 70 W</span></div>
+  </div>
+
+  <div class="kaart">
+    <div class="regel tik"><span class="naam">Koppelen en namen wijzigen</span><span class="waarde">meterkast</span></div>
+  </div>
+</section>
+
+<!-- ======================= Tik op een apparaat ======================= -->
+<section class="scherm" id="pad">
+  <a class="knop" style="width:auto;display:inline-block;margin:0 0 10px" href="javascript:history.back()">‹ Apparaten</a>
+  <div class="titel">Pad</div>
+  <div class="onder">Bewegingsmelder</div>
+  <div class="kaart">
+    <div class="regel"><span class="naam">Laatste beweging</span><span class="waarde accent">14:02</span></div>
+    <div class="regel"><span class="naam">Vandaag</span><span class="waarde">7 keer</span></div>
+    <div class="regel"><span class="naam">Batterij</span><span class="waarde">92%</span></div>
+    <div class="regel"><span class="naam">Contact</span><span class="waarde goed">goed</span></div>
+  </div>
+  <div class="kaart">
+    <div class="regel"><span class="naam">Gebruikt in</span><span class="waarde">2 regels</span></div>
+  </div>
+  <button class="knop tweede">Instellen in de meterkast</button>
+</section>
+
+<nav class="menu">
+  <a href="#"><svg class="p" viewBox="0 0 24 24"><path d="M4 11l8-7 8 7v9h-5v-6H9v6H4z"/></svg>Start</a>
+  <a href="#"><svg class="p" viewBox="0 0 24 24"><path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg>Live</a>
+  <a href="#"><svg class="p" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Gebeurd</a>
+  <a href="#" class="actief"><svg class="p" viewBox="0 0 24 24"><circle cx="12" cy="12" r="2"/><path d="M8 8a6 6 0 0 0 0 8M16 8a6 6 0 0 1 0 8M5 5a10 10 0 0 0 0 14M19 5a10 10 0 0 1 0 14"/></svg>Apparaten</a>
+  <a href="#" aria-label="Instellingen"><svg class="p" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M2 12h3M19 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"/></svg></a>
+</nav>
+
+<script>
+function toon(){
+  const s = (location.hash || '#a').slice(1);
+  const doel = document.getElementById(s) ? s : 'a';
+  document.querySelectorAll('.scherm').forEach(x => x.classList.toggle('zicht', x.id === doel));
+  window.scrollTo(0, 0);
+}
+function ga(s){ location.hash = s; }
+addEventListener('hashchange', toon); toon();
+if ('serviceWorker' in navigator) navigator.serviceWorker.register('sw.js');
+</script>
+</body></html>
